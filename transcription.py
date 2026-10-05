@@ -19,7 +19,7 @@ def transcribe_audio(uploaded_file):
         client = genai.Client(api_key=api_key)
         uploaded = client.files.upload(file=uploaded_file, config={"mime_type": uploaded_file.type})
         prompt = "Transcribe this customer support call. Label speakers as Agent and Customer, include timestamps, preserve Hindi-English code-switching, and return only the transcript."
-        response = client.models.generate_content(model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), contents=[uploaded, prompt], config=types.GenerateContentConfig(temperature=0.1))
+        response = client.models.generate_content(model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"), contents=[uploaded, prompt], config=types.GenerateContentConfig(temperature=0.1))
         return response.text
     except Exception as exc:
         return f"Transcription failed safely: {exc}. You can paste a transcript manually and continue to analysis."
