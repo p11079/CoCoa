@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=0.58in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{microtype}
+
+\definecolor{ink}{HTML}{17211B}
+\definecolor{accent}{HTML}{276749}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.25em,itemsep=1pt,topsep=2pt,parsep=0pt}
+\titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}[\vspace{-5pt}\color{accent}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+\newcommand{\project}[3]{\textbf{#1} \hfill \textit{#2}\\[-1pt]{\small #3}\par}
+\newcommand{\role}[2]{\textbf{#1} \hfill \textit{#2}\\[-1pt]}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries N PRASHANT DEO}\\[3pt]
+    +91-7032044237 $\mid$ \href{mailto:prashantdeo943@gmail.com}{prashantdeo943@gmail.com} $\mid$
+    \href{https://github.com/p11079}{GitHub} $\mid$
+    \href{https://www.linkedin.com/in/n-prashant-deo/}{LinkedIn}
+\end{center}
+
+\section*{Education}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X r@{}}
+  B.Tech. & SRM Institute of Science and Technology, SRM University & 2027 $\mid$ 7.57 CGPA\\
+  Class XII & Kendriya Vidyalaya No. 2, Delhi Cantt. & 2023 $\mid$ 73.4\%\\
+  Class X & Kendriya Vidyalaya No. 2, Delhi Cantt. & 2021 $\mid$ 85\%
+\end{tabularx}
+
+\section*{Technical Skills}
+\textbf{Languages:} Python, Java, SQL, JavaScript, HTML/CSS\\
+\textbf{AI/ML:} Generative AI, Gemini API, NLP, prompt engineering, scikit-learn, Pandas, NumPy, feature engineering\\
+\textbf{Frameworks:} Streamlit, Flask, FastAPI, React, Java Swing, JDBC\\
+\textbf{Databases/Tools:} PostgreSQL, NeonDB, Firebase, Git, GitHub, Power BI, Tableau\\
+\textbf{Coursework:} Data Structures and Algorithms, Machine Learning, DBMS, OOP, Natural Language Processing
+
+\section*{Experience}
+\role{Tata Group Data Analytics Job Simulation (Forage) -- Data Analytics Simulation Participant}{Aug 2026 -- Sep 2026}
+\begin{itemize}
+    \item Conducted exploratory data analysis using AI tools to assess data quality, identify risk indicators, and structure predictive-modeling insights.
+    \item Formulated an initial predictive-modeling framework to evaluate delinquency risk using structured model-evaluation criteria.
+    \item Designed an AI-driven collections strategy with automation and ethical implementation considerations.
+\end{itemize}
+
+\section*{Projects}
+\project{CoCoa -- Conversational Coach}{Python, Streamlit, Gemini API, Pydantic, Pandas}{\href{https://github.com/p11079/CoCoa}{github.com/p11079/CoCoa}}
+\begin{itemize}
+    \item Building a Gemini-powered conversational-AI application that analyzes customer-support and sales transcripts for intent, sentiment, objections, escalation risk, and agent performance.
+    \item Designing structured prompt workflows with schema validation, sales/support/Hindi-English analysis modes, response rewriting, and a benchmark framework for accuracy, latency, and LLM reliability.
+\end{itemize}
+
+\project{Council AI -- Multi-Perspective Decision Evaluation System}{React, Vite, Tailwind CSS, Python, Google GenAI, Streamlit}{ }
+\begin{itemize}
+    \item Engineered a full-stack decision-support system that converts user dilemmas into structured analytical dimensions using strict schemas.
+    \item Implemented exponential-backoff protocols and a token-bucket rate limiter to improve API resilience and throughput.
+\end{itemize}
+
+\project{StockPredictor Base}{Python, scikit-learn, Pandas, NumPy}{\href{https://github.com/p11079/stockpredictorbase}{github.com/p11079/stockpredictorbase}}
+\begin{itemize}
+    \item Built an automated stock-forecasting pipeline using technical indicators and chronological train-test validation splits.
+    \item Evaluated directional accuracy and regression metrics including RMSE, MAE, and MAPE.
+\end{itemize}
+
+\section*{Certifications}
+\begin{itemize}
+    \item Google Data Analytics Professional Certificate -- Coursera, Aug 2026
+    \item Natural Language Processing -- NPTEL IITK, Jan--Apr 2026
+    \item Machine Learning Using Python -- Simplilearn SkillUP, Apr 2025
+    \item Introduction to Artificial Intelligence -- LinkedIn Learning, Oct 2025
+    \item Java (Basic) and Python (Basic) Skill Certifications -- HackerRank, Oct 2024
+\end{itemize}
+
+\end{document}
