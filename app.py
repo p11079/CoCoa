@@ -7,7 +7,6 @@ from pathlib import Path
 import streamlit as st
 
 from analysis import analyze_transcript
-from benchmark import render_benchmark
 from transcription import transcribe_audio
 from validation import SUPPORTED_DOCUMENTS, SUPPORTED_AUDIO, validate_upload
 
@@ -88,12 +87,12 @@ with st.sidebar:
 
 st.markdown('<div class="hero"><div class="eyebrow">Conversation intelligence, with a human in the loop</div><h1>Turn calls into<br><em>better conversations.</em></h1><p>CoCoa transcribes, listens for the moments that matter, and turns them into practical coaching—with every recommendation grounded in the transcript.</p></div>', unsafe_allow_html=True)
 
-tab_coach, tab_benchmark, tab_about = st.tabs(["Coach a call", "Benchmark lab", "How it works"])
+tab_coach, tab_about = st.tabs(["Coach a call", "How it works"])
 
 with tab_coach:
     left, right = st.columns([1.2, .8], gap="large")
     with left:
-        st.markdown('<div class="card"><div class="eyebrow">01 · Bring in a conversation</div><h3>Upload a call or transcript</h3><div class="kicker">Audio is transcribed with Gemini. PDF, TXT, and Markdown work as a fast fallback.</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="card"><div class="eyebrow">01 · Bring in a conversation</div><h3>Upload a call or transcript</h3><div class="kicker">Audio is transcribed with Gemini. PDF, TXT, and Markdown work as a fast fallback.<br><br>MP3 · WAV · M4A · AAC · OGG · FLAC · WebM · PDF · TXT · MD<br>Maximum 100 MB · Recommended call length about 60 minutes</div></div>', unsafe_allow_html=True)
         uploaded = st.file_uploader("", type=sorted(SUPPORTED_AUDIO | SUPPORTED_DOCUMENTS), label_visibility="collapsed")
         c1, c2 = st.columns([1, 1])
         with c1:
@@ -131,22 +130,22 @@ with tab_coach:
     with right:
         st.markdown('<div class="card"><div class="eyebrow">What CoCoa looks for</div><h3>Signal, not surveillance.</h3><p class="kicker">A structured review of the conversation, with evidence attached to every meaningful conclusion.</p></div>', unsafe_allow_html=True)
         cols = st.columns(2)
-        for col, value, label in [(cols[0], "04", "core signals"), (cols[1], "100%", "evidence-backed")]:
+        turns = len([line for line in st.session_state.transcript.splitlines() if ":" in line])
+        words = len(st.session_state.transcript.split())
+        for col, value, label in [(cols[0], turns, "speaker turns in this input"), (cols[1], words, "words in this transcript")]:
             with col:
                 st.markdown(f'<div class="card"><div class="metric">{value}</div><div class="kicker">{label}</div></div>', unsafe_allow_html=True)
         if st.session_state.report:
             r = st.session_state.report
             st.markdown(f'<div class="card" style="margin-top:1rem"><div class="eyebrow">03 · Coaching report</div><h3>{r["headline"]}</h3><p>{r["summary"]}</p><div class="quote">“{r["evidence"]}”</div></div>', unsafe_allow_html=True)
-            st.metric("Conversation score", f'{r["score"]}/100', r["score_delta"])
+            if r.get("score") is not None:
+                st.metric("Conversation score", f'{r["score"]}/100')
             st.markdown("#### Keep doing")
             for item in r["strengths"]: st.success(item)
             st.markdown("#### Try next time")
             for item in r["coaching"]: st.warning(item)
             with st.expander("View structured output"):
                 st.json(r)
-
-with tab_benchmark:
-    render_benchmark()
 
 with tab_about:
     st.markdown('<div class="hero" style="padding-top:1rem"><div class="eyebrow">A staged, inspectable AI workflow</div><h2 style="font-family:Playfair Display;font-size:3rem;letter-spacing:-.05em">The human stays in the loop.</h2><p>CoCoa separates transcription from analysis so you can correct the source of truth, retry one stage independently, and measure where the system is reliable.</p></div>', unsafe_allow_html=True)

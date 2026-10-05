@@ -24,8 +24,4 @@ Push this repository to GitHub, then create a Streamlit Community Cloud app poin
 - Staged workflow keeps transcription and analysis independently debuggable.
 - Transcript editing makes the human the source-of-truth before coaching.
 - Structured JSON output makes reports testable and UI-safe.
-- Benchmark lab keeps reliability visible alongside the demo.
-
-## Evaluation roadmap
-
-The target fixture set is 20 cases: 10 English, 5 Hindi-English, and 5 support/refund/escalation cases. Track transcription success, speaker-label accuracy, intent, sentiment, objections, escalation, recommended-response quality, evidence accuracy, invalid JSON rate, latency, and manual correction rate.
+- The interface shows only counts derived from the current input, such as transcript words and speaker turns. It does not display invented benchmark or baseline numbers.
